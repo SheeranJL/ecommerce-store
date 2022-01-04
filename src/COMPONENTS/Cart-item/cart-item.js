@@ -6,9 +6,9 @@ const CartItem = ( {item: {id, imageUrl, name, price, quantity}} ) => {
 
   const {data, actions} = useContext(appContext);
   useEffect(() => {
-    console.log(data.cartItems)
+
   }, [data.cartItems])
-  
+
   return (
     <div className='cart-item'>
       <img src={imageUrl} />

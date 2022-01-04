@@ -6,7 +6,6 @@ const SignOut = () => {
   const {actions: {setCurrentUser}} = useContext(appContext);
 
   useEffect(() => {
-    console.log('test')
     setCurrentUser(null)
   }, [])
 

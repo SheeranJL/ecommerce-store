@@ -11,4 +11,15 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .incorrect-password {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  span, h2 {
+    text-align: center;
+  }
 }

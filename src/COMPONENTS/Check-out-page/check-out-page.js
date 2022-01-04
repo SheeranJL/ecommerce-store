@@ -39,7 +39,7 @@ const CheckOutPage = () => {
         </div>
       </div>
       {
-        data.cartItems.map((item) => <CheckOutItem item={item} {...item}/>)
+        data.cartItems.map((item, index) => <CheckOutItem key={index} item={item} {...item}/>)
       }
       <div className='total'>
         <span>{`Total: $${totalCost}`}</span>
@@ -49,6 +49,12 @@ const CheckOutPage = () => {
         ? <StripeButton price={totalCost}/>
         : null
       }
+      <div className='test-detail-desc'>
+        <p>If you want to test checkout please use the following details...</p>
+        <p>Card Number: 4242 4242 4242 4242</p>
+        <p>Month/Year: 01/22</p>
+        <p>CCV: 123</p>
+      </div>
     </div>
   )
 

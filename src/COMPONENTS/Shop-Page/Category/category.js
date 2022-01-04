@@ -10,19 +10,22 @@ const Category = ({match}) => {
 
   const category = match.params.categoryId
 
-  console.log(shopData[category])
-
   return (
     <div className='category-page'>
-    <h1 className='title'>{shopData[category].title}</h1>
+    {
+      shopData
+      ? <h1 className='title'>{shopData[category].title}</h1>
+      : null
+    }
+
     <div className='items'>
     {
-      shopData[category]
-      ? shopData[category].items.map((item) => <CategoryItem item={item} data={item}/>)
+      shopData
+      ? shopData[category].items.map((item, index) => <CategoryItem key={index} item={item} data={item}/>)
       : <h1>not found </h1>
     }
 
-    
+
     </div>
     </div>
   )

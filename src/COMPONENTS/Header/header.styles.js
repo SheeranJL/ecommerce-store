@@ -14,11 +14,14 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  text-decoration: none;
 `
 export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
   padding: 25px;
+  text-decoration: none;
+  
 `
 export const OptionsContainer = styled.div`
   width: 50%;

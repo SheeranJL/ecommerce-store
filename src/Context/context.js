@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import ShopData from './ShopData.js';
+import {saveDataToFirestore} from '../Firebase/firebase-utilities.js';
 
 export const appContext = React.createContext();
 
@@ -35,16 +35,18 @@ export const Provider = (props) => {
         linkUrl: 'shop/mens'
       }])
 
-  const [shopData, setShopData] = useState([])
+  const [shopData, setShopData] = useState(null)
 
   const [currentUser, setCurrentUser] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   const isFirstRender = useRef(true);
 
-  useEffect(() => {
 
+
+  useEffect(() => {
     if (isFirstRender.current) {
 
       const dataFromLocalStorage = localStorage.getItem('stateData');
@@ -56,16 +58,15 @@ export const Provider = (props) => {
       isFirstRender.current = false;
     }
 
-    const saveToStorage = () => {
-      if (localStorage) {
-        localStorage.setItem('stateData', JSON.stringify(cartItems))
-      }
+    if (currentUser) {
+      saveDataToFirestore(currentUser.id, cartItems);
     }
-    saveToStorage()
 
-  }, [cartItems])
+    if (shopData) {
+      setLoading(false)
+    }
 
-
+  }, [cartItems, shopData])
 
   const addItemToCart = (item) => {
 
@@ -114,6 +115,10 @@ export const Provider = (props) => {
     return cartItems.filter((cartItem) => cartItem.id !== item.id);
   }
 
+  const updateCollections = (collectionsMap) => {
+    setShopData(collectionsMap);
+  }
+
 
 
   return (
@@ -123,7 +128,8 @@ export const Provider = (props) => {
         currentUser,
         cartItems,
         shopData,
-        orderItems
+        orderItems,
+        loading
       },
       actions: {
         setCurrentUser,
@@ -133,7 +139,8 @@ export const Provider = (props) => {
         setCartItems,
         removeItemFromCart,
         setOrderItems,
-        setShopData
+        setShopData,
+        updateCollections
       }
 
     }}>

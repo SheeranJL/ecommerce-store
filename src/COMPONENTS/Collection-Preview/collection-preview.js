@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import CollectionItem from '../Collection-Item/collection-item.js';
 import './collection-preview.scss';
 
@@ -7,10 +8,10 @@ const CollectionPreview = (props) => {
 
   return (
     <div className='collection-preview'>
-      <h1 className='title'>{props.title.toUpperCase()}</h1>
+      <Link className='title' to={`/shop/${props.data.title.toLowerCase()}`}>{props.data.title.toUpperCase()}</Link>
         <div className='preview'>
         {
-          props.items.filter((item, index) => index < 4).map((item) => <CollectionItem id={item.id} item={item} name={item.name} imageUrl={item.imageUrl} price={item.price}/>)
+          props.data.items.filter((item, index) => index < 4).map((item, index) => <CollectionItem key={index} id={item.id} item={item} name={item.name} imageUrl={item.imageUrl} price={item.price}/>)
         }
         </div>
     </div>

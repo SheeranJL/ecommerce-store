@@ -9,6 +9,7 @@ const SignIn = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [incorrectPassword, setIncorrectPassword] = useState(false);
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -21,15 +22,15 @@ const SignIn = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(email, password)
     try {
       await auth.signInWithEmailAndPassword(email, password)
       setEmail('');
       setPassword('');
+      setIncorrectPassword(false);
       history.push('/');
-
     } catch(error) {
-      console.log('error signing in', error)
+      console.log(error);
+      setIncorrectPassword(true);
     }
 
     setEmail('');
@@ -46,6 +47,9 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <FormInput name='email' label='Email' type='email' value={email} onChange={(handleChange)}/>
         <FormInput name='password' label='Password' type='password' value={password} onChange={handleChange}/>
+        {
+          incorrectPassword ? <p className='incorrect-password'>Incorrect username or password</p> : ''
+        }
         <div className='buttons'>
           <CustomButton type='submit'>Sign in</CustomButton>
           <CustomButton isGoogleSignIn onClick={signInWithGoogle}>Google signin</CustomButton>

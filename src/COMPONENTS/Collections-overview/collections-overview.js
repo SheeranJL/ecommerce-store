@@ -8,16 +8,33 @@ import CollectionPreview from '../Collection-Preview/collection-preview.js';
 
 const CollectionsOverview = (props) => {
 
-  const [items, setItems] = useState(null);
+  const {data: {shopData}} = useContext(appContext);
+  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState(null)
 
+  useEffect(() => {
 
-    console.log(Object.keys(props.data))
+    if (shopData) {
+      setItems(Object.keys(shopData).map(key => shopData[key]))
+      setLoading(false)
+    } else {
+      setItems([])
+      setLoading(true)
+    }
+  }, [shopData])
 
   return (
     <div className='collections-overview'>
-    null
+
+      {
+        loading
+        ? null
+        : items.map((item, index) => <CollectionPreview data={item}/>)
+      }
+
     </div>
   )
+
 }
 
 export default CollectionsOverview;

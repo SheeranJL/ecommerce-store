@@ -28,10 +28,15 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
     try {
       await userRef.set({
-        displayName,
-        email,
-        createdAt,
-        ...additionalData
+        user: {
+          displayName,
+          email,
+          createdAt,
+          ...additionalData
+        },
+        data: {
+          additionalData
+        }
       })
     } catch (error) {
       console.log('Error occured', error);
@@ -45,7 +50,7 @@ export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
 
   const batch = firestore.batch();
-  objectsToAdd.forEach(obj => {
+    objectsToAdd.forEach(obj => {
     const newDocRef = collectionRef.doc();
     batch.set(newDocRef, obj)
   })
@@ -69,6 +74,36 @@ export const convertCollectionsSnapshotToMap = (collections) => {
     accumulator[collection.title.toLowerCase()] = collection;
     return accumulator;
   }, {})
+}
+
+
+export const saveDataToFirestore = async(userAuth, data) => {
+
+  const userRef = firestore.doc(`users/${userAuth}`);
+  const collectionRef = firestore.collection(`users/${userAuth}/data`)
+  const userData = firestore.collection('users').doc(userAuth)
+
+  try {
+    await userData.update({
+      data
+    })
+  } catch(error) {
+    console.log('error saving to firebase: ', error)
+  }
+}
+
+export const onLoginData = async(userAuth) => {
+
+  const dataRef = await firestore.collection('users').doc(userAuth);
+  const data = await dataRef.get();
+
+  if (!data.exists) {
+    console.log('no data exists')
+    return
+  } else {
+    return data.data();
+  }
+
 }
 
 

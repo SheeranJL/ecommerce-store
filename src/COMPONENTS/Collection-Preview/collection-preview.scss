@@ -6,6 +6,15 @@
   .title {
     font-size: 20px;
     margin-bottom: 25px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    font-size: 28px;
+
+    &:hover {
+      color: grey;
+    }
   }
 
   .preview {

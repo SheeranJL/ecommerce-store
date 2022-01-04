@@ -49,13 +49,13 @@ const SignUp = () => {
   return (
     <div className='sign-up'>
       <h2 className='title'>Don't have an account?</h2>
-      <span>Create one below!</span>
+      <span className='create-account-desc'>Create one below!</span>
 
       <form className='sign-up-form' onSubmit={handleSubmit}>
-        <FormInput onChange={handleChange} label='name' name='name' type='text' value={displayName} />
-        <FormInput onChange={handleChange} label='email' name='email' type='email' value={email} />
-        <FormInput onChange={handleChange} label='password' name='password' type='password' value={password} />
-        <FormInput onChange={handleChange} label='confirm password' name='confirmPassword' type='password' value={confirmPassword} />
+        <FormInput onChange={handleChange} label='Name' name='name' type='text' value={displayName} />
+        <FormInput onChange={handleChange} label='Email' name='email' type='email' value={email} />
+        <FormInput onChange={handleChange} label='Password' name='password' type='password' value={password} />
+        <FormInput onChange={handleChange} label='Confirm password' name='confirmPassword' type='password' value={confirmPassword} />
         <CustomButton> Sign Up </CustomButton>
       </form>
 

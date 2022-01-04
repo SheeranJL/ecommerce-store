@@ -1,8 +1,7 @@
 import React, {useContext, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import {appContext} from '../../Context/context.js';
 import {auth} from '../../Firebase/firebase-utilities.js'
-import {Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../Images/crown.svg';
 import {OptionContainerStyles, HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv} from './header.styles.js';
 import './header.scss';
@@ -15,18 +14,23 @@ const Header = () => {
   const [hidden, setHidden] = useState(true);
 
   const history = useHistory();
-  const {data: {currentUser}} = useContext(appContext);
+  const {data: {currentUser}, actions} = useContext(appContext);
 
   const handleToggleCartDropdown = () => {
     setHidden(!hidden);
   }
 
+  const handleSignOut = async() => {
+    await auth.signOut()
+    actions.setCartItems([]);
+  }
 
   return (
 
     <HeaderContainer>
+
       <LogoContainer to='/'>
-        <Logo />
+        <Link to='/' className='my-shop-title' style={{textDecoration: 'none'}}>My Shop</Link>
       </LogoContainer>
 
     <OptionsContainer>
@@ -34,7 +38,7 @@ const Header = () => {
       <OptionLink to='/contact'>Contact</OptionLink>
       {
         currentUser
-        ? <OptionDiv onClick={() => auth.signOut()}>Sign Out</OptionDiv>
+        ? <OptionDiv onClick={handleSignOut}>Sign Out</OptionDiv>
         : <OptionLink to='/signin'>Sign In</OptionLink>
       }
       <CartIcon onClick={handleToggleCartDropdown}/>

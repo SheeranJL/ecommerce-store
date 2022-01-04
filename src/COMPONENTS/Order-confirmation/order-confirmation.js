@@ -6,7 +6,6 @@ const OrderConfirmation = () => {
 
   const {data : {orderItems}} = useContext(appContext);
 
-  console.log(orderItems);
 
   return (
     <div>

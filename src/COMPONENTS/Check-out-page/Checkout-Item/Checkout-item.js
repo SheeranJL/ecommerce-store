@@ -34,7 +34,7 @@ const CheckOutItem = ({id, item, imageUrl, name, price, quantity}) => {
         <div className='arrow' onClick={() => handleIncrease()}>&#10095;</div>
       </span>
 
-      <span className='price'>{price}</span>
+      <span className='price'>${price}</span>
       <div className='remove-button' onClick={() => handleRemove()}>&#10005;</div>
 
     </div>

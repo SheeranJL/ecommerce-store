@@ -9,7 +9,6 @@ const CollectionItem = ({id, item, name, imageUrl, price}) => {
 
   const handleClick = (e) => {
     actions.addItemToCart({...item})
-    console.log(item)
   }
 
   return (

@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import {useContext, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {appContext} from './Context/context.js'
-import {auth, createUserProfileDocument} from './Firebase/firebase-utilities.js';
+import {auth, createUserProfileDocument, onLoginData} from './Firebase/firebase-utilities.js';
 import ShopData from './Data/shop-data';
 
 
@@ -27,6 +27,7 @@ const App = () => {
 
 
   useEffect(() => {
+
     unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -36,9 +37,25 @@ const App = () => {
             ...snapShot.data
           });
         });
+
+        const getDataFromFirestore = async() => {
+          const firestoreData = await onLoginData(userAuth.uid);
+          const response = await firestoreData;
+
+          if (response.data.length) {
+            const itemsMap = await response.data.map(item => item);
+            await actions.setCartItems([...itemsMap])
+          } else {
+            return
+          }
+
+        }
+        getDataFromFirestore();
       }
+
       actions.setCurrentUser(userAuth);
     })
+
 
 
     if (data.orderItems.length !== 0) {

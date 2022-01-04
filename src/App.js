@@ -70,7 +70,7 @@ const App = () => {
   return (
     <div className='app-container'>
 
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />

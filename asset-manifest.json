@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ecommerce-store/static/css/main.6079b67c.chunk.css",
-    "main.js": "/ecommerce-store/static/js/main.e954cd22.chunk.js",
-    "main.js.map": "/ecommerce-store/static/js/main.e954cd22.chunk.js.map",
-    "runtime-main.js": "/ecommerce-store/static/js/runtime-main.848a27ff.js",
-    "runtime-main.js.map": "/ecommerce-store/static/js/runtime-main.848a27ff.js.map",
-    "static/js/2.5e9560ea.chunk.js": "/ecommerce-store/static/js/2.5e9560ea.chunk.js",
-    "static/js/2.5e9560ea.chunk.js.map": "/ecommerce-store/static/js/2.5e9560ea.chunk.js.map",
-    "static/js/3.0f96a971.chunk.js": "/ecommerce-store/static/js/3.0f96a971.chunk.js",
-    "static/js/3.0f96a971.chunk.js.map": "/ecommerce-store/static/js/3.0f96a971.chunk.js.map",
-    "index.html": "/ecommerce-store/index.html",
-    "static/css/main.6079b67c.chunk.css.map": "/ecommerce-store/static/css/main.6079b67c.chunk.css.map",
-    "static/js/2.5e9560ea.chunk.js.LICENSE.txt": "/ecommerce-store/static/js/2.5e9560ea.chunk.js.LICENSE.txt",
-    "static/media/crown.3a4e2b15.svg": "/ecommerce-store/static/media/crown.3a4e2b15.svg",
-    "static/media/logo.6ce24c58.svg": "/ecommerce-store/static/media/logo.6ce24c58.svg",
-    "static/media/shopping-bag.a688874f.svg": "/ecommerce-store/static/media/shopping-bag.a688874f.svg"
+    "main.css": "/maps-covid-info/static/css/main.6079b67c.chunk.css",
+    "main.js": "/maps-covid-info/static/js/main.be1cde01.chunk.js",
+    "main.js.map": "/maps-covid-info/static/js/main.be1cde01.chunk.js.map",
+    "runtime-main.js": "/maps-covid-info/static/js/runtime-main.43ed022b.js",
+    "runtime-main.js.map": "/maps-covid-info/static/js/runtime-main.43ed022b.js.map",
+    "static/js/2.a82a827b.chunk.js": "/maps-covid-info/static/js/2.a82a827b.chunk.js",
+    "static/js/2.a82a827b.chunk.js.map": "/maps-covid-info/static/js/2.a82a827b.chunk.js.map",
+    "static/js/3.0f96a971.chunk.js": "/maps-covid-info/static/js/3.0f96a971.chunk.js",
+    "static/js/3.0f96a971.chunk.js.map": "/maps-covid-info/static/js/3.0f96a971.chunk.js.map",
+    "index.html": "/maps-covid-info/index.html",
+    "static/css/main.6079b67c.chunk.css.map": "/maps-covid-info/static/css/main.6079b67c.chunk.css.map",
+    "static/js/2.a82a827b.chunk.js.LICENSE.txt": "/maps-covid-info/static/js/2.a82a827b.chunk.js.LICENSE.txt",
+    "static/media/crown.3a4e2b15.svg": "/maps-covid-info/static/media/crown.3a4e2b15.svg",
+    "static/media/logo.6ce24c58.svg": "/maps-covid-info/static/media/logo.6ce24c58.svg",
+    "static/media/shopping-bag.a688874f.svg": "/maps-covid-info/static/media/shopping-bag.a688874f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.848a27ff.js",
-    "static/js/2.5e9560ea.chunk.js",
+    "static/js/runtime-main.43ed022b.js",
+    "static/js/2.a82a827b.chunk.js",
     "static/css/main.6079b67c.chunk.css",
-    "static/js/main.e954cd22.chunk.js"
+    "static/js/main.be1cde01.chunk.js"
   ]
 }
